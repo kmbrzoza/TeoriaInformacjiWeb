@@ -1,0 +1,20 @@
+<ti-navbar [isMobile]="isMobile$ | async"
+           [isMenuOpen]="isMenuOpen$ | async"
+           (menuToggled)="menuToggle()">
+</ti-navbar>
+
+<mat-sidenav-container>
+    <mat-sidenav #sideNav="matSidenav"
+                 [fixedInViewport]="true"
+                 [fixedTopGap]="64"
+                 [mode]="(isMobile$ | async) ? 'over' : 'side'"
+                 [opened]="isMenuOpen$ | async"
+                 (closed)="onSidenavClose()">
+        <ti-menu></ti-menu>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <main class="container">
+            <router-outlet></router-outlet>
+        </main>
+    </mat-sidenav-content>
+</mat-sidenav-container>

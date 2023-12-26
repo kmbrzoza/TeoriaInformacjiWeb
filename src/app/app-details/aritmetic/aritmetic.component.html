@@ -1,0 +1,11 @@
+<div class="my-4">
+    <ti-coding-form (encoded)="onEncoded($event)"
+                    [isEncoding]="!!(isEncoding$ | async)">
+    </ti-coding-form>
+    <ng-container *ngIf="result$ | async as result">
+        <ti-common-details [result]="result">
+        </ti-common-details>
+        <ti-aritmetic-details [details]="result">
+        </ti-aritmetic-details>
+    </ng-container>
+</div>

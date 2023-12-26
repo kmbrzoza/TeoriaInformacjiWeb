@@ -1,0 +1,8 @@
+.details {
+    row-gap: 1.5rem;
+
+    &__char-coding {
+        max-height: 500px;
+        overflow-y: auto;
+    }
+}
