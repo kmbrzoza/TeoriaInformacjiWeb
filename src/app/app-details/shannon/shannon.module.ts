@@ -4,19 +4,19 @@ import { MaterialModule } from 'src/app/material.module';
 import { ModalsModule } from 'src/app/shared/components/modals/modals.module';
 
 import { AppDetailsSharedModule } from '../app-details-shared/app-details-shared.module';
-import { ShannonFanoRoutingModule } from './shannon-fano-routing.module';
-import { ShannonFanoComponent } from './shannon-fano.component';
+import { ShannonComponent } from '../shannon/shannon.component';
+import { ShannonRoutingModule } from './shannon-routing.module';
 
 @NgModule({
     declarations: [
-        ShannonFanoComponent
+        ShannonComponent
     ],
     imports: [
         CommonModule,
-        ShannonFanoRoutingModule,
+        ShannonRoutingModule,
         MaterialModule,
         AppDetailsSharedModule,
         ModalsModule
     ]
 })
-export class ShannonFanoModule { }
+export class ShannonModule { }

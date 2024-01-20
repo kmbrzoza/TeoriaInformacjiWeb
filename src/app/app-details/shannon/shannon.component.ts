@@ -2,27 +2,27 @@ import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { BehaviorSubject } from 'rxjs';
 import { CodingForm } from 'src/app/core/models/common.model';
-import { ShannonFanoResult } from 'src/app/core/models/shannon-fano.model';
+import { ShannonResult } from 'src/app/core/models/shannon.model';
 import { CharCounterService } from 'src/app/core/services/char-counter.service';
 import { CommonService } from 'src/app/core/services/common.service';
 import { EntropiaService } from 'src/app/core/services/entropia.service';
-import { ShannonFanoService } from 'src/app/core/services/shannon-fano.service';
+import { ShannonService } from 'src/app/core/services/shannon.service';
 import { InformationModalComponent } from 'src/app/shared/components/modals/information-modal/information-modal.component';
 
 @Component({
-    selector: 'ti-shannon-fano',
-    templateUrl: './shannon-fano.component.html',
-    styleUrls: ['./shannon-fano.component.scss']
+    selector: 'ti-shannon',
+    templateUrl: './shannon.component.html',
+    styleUrls: ['./shannon.component.scss']
 })
-export class ShannonFanoComponent {
+export class ShannonComponent {
     isEncoding$ = new BehaviorSubject<boolean>(false);
 
-    result$ = new BehaviorSubject<ShannonFanoResult | undefined>(undefined)
+    result$ = new BehaviorSubject<ShannonResult | undefined>(undefined)
 
     constructor(
+        private _shannonService: ShannonService,
         private _charCounter: CharCounterService,
         private _entropia: EntropiaService,
-        private _shannonFano: ShannonFanoService,
         private _dialog: MatDialog,
         private _commonService: CommonService
     ) { }
@@ -39,10 +39,10 @@ export class ShannonFanoComponent {
             const entropia = this._entropia.calculateEntropia(probabilityOfChars);
 
             const startTimeSF = new Date().getTime();
-            const shannonFanoResult = this._shannonFano.startAlgo(probabilityOfChars);
+            const shannonResult = this._shannonService.startAlgo(probabilityOfChars);
             const endTimeSF = new Date().getTime();
 
-            const L = this._commonService.calculateL(shannonFanoResult);
+            const L = this._commonService.calculateL(shannonResult);
             const n = this._commonService.calculaten(entropia, L);
             const rozwleklosc = this._commonService.calculateRozwleklosc(n);
             const codeEfficienty = this._commonService.calculateCodeEfficienty(entropia, L);
@@ -50,7 +50,7 @@ export class ShannonFanoComponent {
             this.result$.next({
                 charCounts: charCounts,
                 probabilityOfChars: probabilityOfChars,
-                result: shannonFanoResult,
+                result: shannonResult,
                 entropia: entropia,
                 time: endTimeSF - startTimeSF,
                 L: L,

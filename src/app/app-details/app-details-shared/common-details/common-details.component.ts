@@ -10,7 +10,7 @@ import { CommonResult, Lookup } from 'src/app/core/models/common.model';
 export class CommonDetailsComponent implements OnChanges {
     @Input() result: CommonResult;
 
-    probabilityOfCharsData: Lookup[];
+    probabilityOfCharsData: Lookup[] = [];
 
     legendPosition = LegendPosition;
     view: any = [undefined, 400]
@@ -19,14 +19,27 @@ export class CommonDetailsComponent implements OnChanges {
         const probabilityOfChars: Lookup[] = [];
         for (let key in this.result.probabilityOfChars) {
             if (key === ' ') {
-                probabilityOfChars.push({ name: 'Odstęp', value: this.result.probabilityOfChars[key] });
+                probabilityOfChars.push({
+                    name: `Odstęp - ${this.formatValue(this.result.probabilityOfChars[key])}`,
+                    value: this.result.probabilityOfChars[key]
+                });
             } else if (key === '\n') {
-                probabilityOfChars.push({ name: 'Nowa linia', value: this.result.probabilityOfChars[key] });
+                probabilityOfChars.push({
+                    name: `Nowa linia - ${this.formatValue(this.result.probabilityOfChars[key])}`,
+                    value: this.result.probabilityOfChars[key]
+                });
             } else {
-                probabilityOfChars.push({ name: key, value: this.result.probabilityOfChars[key] });
+                probabilityOfChars.push({
+                    name: `${key} - ${this.formatValue(this.result.probabilityOfChars[key])}`,
+                    value: this.result.probabilityOfChars[key]
+                });
             }
         }
 
         this.probabilityOfCharsData = probabilityOfChars;
+    }
+
+    private formatValue(value: number): number {
+        return Math.round(value * 10000) / 10000;
     }
 }

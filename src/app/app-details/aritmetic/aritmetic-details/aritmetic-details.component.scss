@@ -1,0 +1,21 @@
+.details {
+    row-gap: 1.5rem;
+
+    &__decoded {
+        word-break: break-word;
+        max-height: 500px;
+        overflow-y: auto;
+    }
+}
+
+.correct {
+    color: rgb(18, 150, 18);
+}
+
+.incorrect {
+    color: rgb(221, 28, 28);
+}
+
+.missing {
+    color: rgb(95, 95, 95);
+}

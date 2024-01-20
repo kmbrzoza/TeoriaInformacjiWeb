@@ -1,4 +1,4 @@
-<div class="details row">
+<div class="details row my-4">
     <div class="col-12">
         <mat-card>
             <mat-card-header>
@@ -6,7 +6,7 @@
             </mat-card-header>
             <mat-card-content>
                 <div class="row details__char-coding">
-                    <div *ngFor="let node of details.result"
+                    <div *ngFor="let node of nodes"
                          class="col-md-6">
                         <p>
                             {{node.symbol === ' ' ? 'Odstęp' : node.symbol === '\n' ?'Nowa linia' : node.symbol}}
@@ -25,7 +25,7 @@
                 <mat-card-title>Średnia długość słowa kodowego</mat-card-title>
             </mat-card-header>
             <mat-card-content>
-                {{details.L | number:'0.0-5'}}
+                {{L | number:'0.0-5'}}
             </mat-card-content>
         </mat-card>
     </div>
@@ -35,7 +35,7 @@
                 <mat-card-title>Sprawność</mat-card-title>
             </mat-card-header>
             <mat-card-content>
-                {{details.n | number:'0.0-5'}}
+                {{n | number:'0.0-5'}}
             </mat-card-content>
         </mat-card>
     </div>
@@ -45,7 +45,7 @@
                 <mat-card-title>Rozwlekłość</mat-card-title>
             </mat-card-header>
             <mat-card-content>
-                {{details.rozwleklosc | number:'0.0-5'}}
+                {{rozwleklosc | number:'0.0-5'}}
             </mat-card-content>
         </mat-card>
     </div>
@@ -55,7 +55,7 @@
                 <mat-card-title>Efektywność kodu</mat-card-title>
             </mat-card-header>
             <mat-card-content>
-                {{details.codeEfficienty | number:'0.0-5'}}
+                {{codeEfficienty | number:'0.0-2'}}%
             </mat-card-content>
         </mat-card>
     </div>

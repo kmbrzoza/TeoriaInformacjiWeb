@@ -1,11 +1,38 @@
 <div class="details row">
-    <div class="col-12">
+    <div class="col-md-6">
         <mat-card>
             <mat-card-header>
                 <mat-card-title>Zakodowana wartość arytmetyczna</mat-card-title>
             </mat-card-header>
             <mat-card-content>
                 {{details.result}}
+            </mat-card-content>
+        </mat-card>
+    </div>
+    <div class="col-md-6">
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title>Procent prawidłowo zdekodowanych znaków</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                {{details.percentageOfCorrectDecodedValue | number:'0.0-2'}}%
+            </mat-card-content>
+        </mat-card>
+    </div>
+    <div class="col-12">
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title>Zdekodowana wartość arytmetyczna</mat-card-title>
+            </mat-card-header>
+            <mat-card-content class="details__decoded">
+                <span *ngFor="let char of details.inputValue | split, index as i"
+                      [class.correct]="i < details.decodedValue.length && char === details.decodedValue[i]"
+                      [class.incorrect]="i < details.decodedValue.length && char !== details.decodedValue[i]"
+                      [class.missing]="i >= details.decodedValue.length">{{i < details.decodedValue.length
+                      ?
+                      details.decodedValue[i]
+                      :
+                      char}}</span>
             </mat-card-content>
         </mat-card>
     </div>

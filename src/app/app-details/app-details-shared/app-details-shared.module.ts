@@ -8,11 +8,13 @@ import { SpinnerButtonModule } from 'src/app/shared/components/spinner-button/sp
 
 import { CodingFormComponent } from './coding-form/coding-form.component';
 import { CommonDetailsComponent } from './common-details/common-details.component';
+import { ShannonsCommonDetailsComponent } from './shannons-common-details/shannons-common-details.component';
 
 @NgModule({
     declarations: [
         CommonDetailsComponent,
-        CodingFormComponent
+        CodingFormComponent,
+        ShannonsCommonDetailsComponent
     ],
     imports: [
         CommonModule,
@@ -24,7 +26,8 @@ import { CommonDetailsComponent } from './common-details/common-details.componen
     ],
     exports: [
         CommonDetailsComponent,
-        CodingFormComponent
+        CodingFormComponent,
+        ShannonsCommonDetailsComponent
     ]
 })
 export class AppDetailsSharedModule { }

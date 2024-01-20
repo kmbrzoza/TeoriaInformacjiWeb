@@ -12,6 +12,10 @@ const routes: Routes = [
             {
                 path: 'aritmetic',
                 loadChildren: () => import('./aritmetic/aritmetic.module').then(m => m.AritmeticModule)
+            },
+            {
+                path: 'shannon',
+                loadChildren: () => import('./shannon/shannon.module').then(m => m.ShannonModule)
             }
         ]
     }

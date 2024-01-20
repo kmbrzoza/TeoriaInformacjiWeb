@@ -32,19 +32,24 @@ export class AritmeticComponent {
             this.displayModal();
         } else {
             const probabilityOfChars = this._charCounter.countProbabilityOfChars(charCounts);
-
             const entropia = this._entropia.calculateEntropia(probabilityOfChars);
 
             const startTimeAritmetic = new Date().getTime();
             const aritmeticValue = this._aritmetic.encode(probabilityOfChars, form.value);
             const endTimeAritmetic = new Date().getTime();
 
+            const decodedValue = this._aritmetic.docode(probabilityOfChars, aritmeticValue, form.value.length)
+            const percentageOfCorrectDecodedValue = this._aritmetic.calculatePercentageOfCorrectDecodedValue(form.value, decodedValue);
+
             this.result$.next({
                 charCounts: charCounts,
                 probabilityOfChars: probabilityOfChars,
                 entropia: entropia,
                 time: endTimeAritmetic - startTimeAritmetic,
-                result: aritmeticValue
+                result: aritmeticValue,
+                inputValue: form.value,
+                decodedValue: decodedValue,
+                percentageOfCorrectDecodedValue: percentageOfCorrectDecodedValue
             });
             this.isEncoding$.next(false);
         }

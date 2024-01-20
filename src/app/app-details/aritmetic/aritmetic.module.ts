@@ -6,11 +6,13 @@ import { AppDetailsSharedModule } from '../app-details-shared/app-details-shared
 import { AritmeticComponent } from '../aritmetic/aritmetic.component';
 import { AritmeticRoutingModule } from './aritmetic-routing.module';
 import { AritmeticDetailsComponent } from './aritmetic-details/aritmetic-details.component';
+import { SplitPipe } from './aritmetic-details/split.pipe';
 
 @NgModule({
     declarations: [
         AritmeticComponent,
-        AritmeticDetailsComponent
+        AritmeticDetailsComponent,
+        SplitPipe
     ],
     imports: [
         CommonModule,

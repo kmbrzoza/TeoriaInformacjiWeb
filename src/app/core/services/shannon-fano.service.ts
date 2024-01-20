@@ -17,7 +17,7 @@ export class ShannonFanoService {
             });
         }
 
-        result.sort((a: SFNode, b: SFNode) => b.probability - a.probability)
+        result.sort((a: SFNode, b: SFNode) => b.probability - a.probability);
 
         return this.divide(result);
     }
